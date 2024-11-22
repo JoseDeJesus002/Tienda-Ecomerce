@@ -1,0 +1,57 @@
+TRIGGER DE PAPELERIA PRODUCTOS DESCONTINUADOS
+
+CREATE TRIGGER productos_descontinuados BEFORE DELETE ON productos 
+FOR EACH ROW INSERT INTO descontinuados (id_productos,nombre,cantidad,precio,imagen,fecha_salida,hora_salida)
+VALUES(OLD.id_productos,OLD.nombre,OLD.cantidad,OLD.precio,OLD.imagen,NOW(),TIME(NOW()));
+
+TRIGGER DE PAPELERIA PRODUCTOS ENTRADA
+
+CREATE TRIGGER productos_entrada BEFORE INSERT ON productos
+FOR EACH ROW INSERT INTO entrada (id_productos,nombre,cantidad,precio,imagen,fecha_entrada,hora_entrada)
+VALUES(NEW.id_productos,NEW.nombre,NEW.cantidad,NEW.precio,NEW.imagen,NOW(),TIME(NOW()));
+
+TRIGGER DE PAPELERIA PRODUCTOS SALIDA
+
+CREATE TRIGGER productos_salida BEFORE DELETE ON productos
+FOR EACH ROW INSERT INTO salida (id_productos,nombre,cantidad,precio,imagen,fecha_salida,hora_salida)
+VALUES(OLD.id_productos,OLD.nombre,OLD.cantidad,OLD.precio,OLD.imagen,NOW(),TIME(NOW()));
+
+TRIGGER DE PAPELERIA PRODUCTOS MODIFICACION
+
+CREATE TRIGGER productos_modificacion BEFORE UPDATE ON productos
+FOR EACH ROW INSERT INTO modificacion (id_productos,nombre,cantidad,precio,imagen,fecha_modificacion,hora_modificacion)
+VALUES(OLD.id_productos,OLD.nombre,OLD.cantidad,OLD.precio,OLD.imagen,NOW(),TIME(NOW()));
+
+Trigger prodcutos agotados
+
+CREATE TRIGGER productos_agotados BEFORE INSERT ON productos
+FOR EACH ROW IF NEW.cantidad <= 0 THEN INSERT INTO productos_agotados (id_productos,nombre,cantidad,precio,imagen,fecha_ingreso,hora_ingreso)
+VALUES(NEW.id_productos,NEW.nombre,NEW.cantidad,NEW.precio,NEW.imagen,NOW(),TIME(NOW())); END IF;
+
+Eliminar prodcutos con cantidad 0 Trigger
+
+CREATE TRIGGER eliminar_productos_agotados BEFORE INSERT ON productos
+FOR EACH ROW IF NEW.cantidad <= 0 THEN DELETE FROM productos WHERE id_productos = NEW.id_productos; END IF;
+
+Trigger de productos con cantidad 0
+
+CREATE TRIGGER productos_cantidad_cero BEFORE INSERT ON productos
+FOR EACH ROW IF NEW.cantidad <= 0 THEN INSERT INTO productos_cantidad_cero (id_productos,nombre,cantidad,precio,imagen,fecha_ingreso,hora_ingreso)
+VALUES(NEW.id_productos,NEW.nombre,NEW.cantidad,NEW.precio,NEW.imagen,NOW(),TIME(NOW())); END IF;
+
+Nuevo_productos_Agotados
+DELIMITER //
+CREATE TRIGGER productos_agotados BEFORE UPDATE ON productos
+FOR EACH ROW
+BEGIN
+    IF NEW.cantidad <= 0 THEN
+        INSERT INTO productos_agotados (id_productos, nombre, cantidad, precio, categoria, imagen, fecha_ingreso, hora_ingreso)
+        VALUES (NEW.id_productos, NEW.nombre, NEW.cantidad, NEW.precio, NEW.categoria, NEW.imagen, CURDATE(), CURTIME());
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+
+

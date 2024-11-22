@@ -1,0 +1,30 @@
+h2{
+	font-family: 'Abril Fatface', cursive;
+}
+
+img {
+	max-height: 200px;
+}
+
+.boton {
+	border-radius: 20px;
+	background-color: #fc1818;
+	
+}
+
+h5{
+	font-family: 'Abril Fatface', cursive;
+	font-family: 'Silkscreen', cursive;
+	color: #b40404;
+}
+
+h3{
+	font-family: 'Abril Fatface', cursive;
+	color: #ff2c2c;
+}
+
+.letra {
+	font-family: 'Abril Fatface', cursive;
+	
+	color: #b40404;
+}

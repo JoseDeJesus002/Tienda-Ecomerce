@@ -1,0 +1,109 @@
+ /* Estilos para el menú */
+ *{
+    margin: 0;
+}
+.menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        background-color: #333;
+      }
+      .menu li {
+        float: left;
+      }
+      .menu li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .menu li a:hover {
+        background-color: #111;
+      }
+      .menu .active {
+        background-color: #4CAF50;
+      }
+      
+      /* Estilos para el título */
+      .title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+      .derecha {
+        float: right;
+        margin-right: 20px;
+      }
+    
+      .logout {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 0px;
+        margin-right: 20px;
+        display: block;
+      }
+      
+      /* Estilos para el botón de cerrar sesión */
+      .logout-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: 20px;
+        display: block;
+      }
+      .logout-btn:hover {
+        background-color: #d32f2f;
+      }
+      .servicios{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    margin: auto;
+    max-width: 1100px;
+    padding: 20px;
+  }
+  /* estilo servicio */
+  .servicios .col{
+    text-align: center;
+  }
+  .servicios .col .card{
+    border: 1px solid black;
+    height: 300px;
+    width: 250px;
+    background-color: black;
+    padding: 20px;
+    color: white;
+    border-radius: 20px;
+    margin: 20px;
+  }
+  .servicios .col .card p{
+    padding: 20px;
+  }
+  .servicios .icono{
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    border-radius: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.servicios .icono .circulo{
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 45px;
+}

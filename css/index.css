@@ -1,0 +1,16 @@
+/* id="logout" */
+
+#logout {
+    padding-right: 20px;
+    margin-left: 0px;
+    text-transform: uppercase;
+    transition: all .3s ease-in-out;
+    outline: none;
+    cursor: pointer;
+    border-bottom: none;
+}
+
+#logout:hover {
+    background-color: #b32400;
+    color: #ffffff;
+  }
